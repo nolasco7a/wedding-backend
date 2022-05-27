@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guest;
+use App\Models\Gift;
 use App\Models\ChildParent;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -123,6 +124,12 @@ class GuestController extends Controller
                     'category'=>1,
                     'email_status'=>$request->status?1:0
                 ])->save();
+                if ($request->selected_gifts != null || $request->selected_gifts != '') {
+                    foreach ($request->selected_gifts as $gift) {
+                        Gift::where('id', $gift['id'])->update(['status' => 2]);
+                    }
+                }
+
             }else{
                 return response()->json(['message'=>'Data incorrect, fill the fields correctly']. 400);
             }
