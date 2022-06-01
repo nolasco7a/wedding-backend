@@ -6,6 +6,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ViewDataController;
 use App\Http\Controllers\GiftController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\SquadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,9 @@ Route::get('/slider', [ViewDataController::class, 'getSlider']);
 
 /* created new guest */
 Route::post('create_guest', [GuestController::class, 'createNewGuests']);
+
+/* get bride squad */
+Route::get('/bride_squad', [SquadController::class, 'getBrideSquad']);
+
+/* get groom squad */
+Route::get('/groom_squad', [SquadController::class, 'getGroomSquad']);
