@@ -7,6 +7,8 @@ use App\Http\Controllers\ViewDataController;
 use App\Http\Controllers\GiftController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\SquadController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\LocationsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +60,10 @@ Route::get('/bride_squad', [SquadController::class, 'getBrideSquad']);
 
 /* get groom squad */
 Route::get('/groom_squad', [SquadController::class, 'getGroomSquad']);
+
+/* get Locations */
+Route::get('/locations', [LocationsController::class, 'getLocations']);
+
+/* get Settings */
+Route::get('/settings', [SettingsController::class, 'getSettings']);
+
