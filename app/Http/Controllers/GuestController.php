@@ -120,6 +120,9 @@ class GuestController extends Controller
                     'email'=>$request->email,
                     'phone_number'=>$request->phone_number,
                     'status'=>$request->status,
+                    'song' => $request->song !== '' ? $request->song : null,
+                    'allergies' => $request->allergies !== '' ? $request->allergies : null,
+                    'other_event' => $request->other_event !== '' ? $request->other_event : null,
                     'seating_chart'=>1,
                     'category'=>1,
                     'email_status'=>$request->status?1:0
