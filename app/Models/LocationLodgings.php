@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LocationLodgings extends Model
 {
-    protected $table = 'location_lodging';
+    protected $table = 'locations_lodging';
     protected $guarded = [];
 }
