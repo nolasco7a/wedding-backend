@@ -67,3 +67,7 @@ Route::get('/locations', [LocationsController::class, 'getLocations']);
 /* get Settings */
 Route::get('/settings', [SettingsController::class, 'getSettings']);
 
+/* get Location lodging */
+Route::get('/location_lodging', [LocationsController::class, 'getLocationLodging']);
+
+
