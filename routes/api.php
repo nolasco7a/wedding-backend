@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
@@ -69,5 +70,11 @@ Route::get('/settings', [SettingsController::class, 'getSettings']);
 
 /* get Location lodging */
 Route::get('/location_lodging', [LocationsController::class, 'getLocationLodging']);
+
+/* New comment */
+Route::post('/new_comment', [CommentController::class, 'newComment']);
+
+/* get comments */
+Route::get('/comments', [CommentController::class, 'getComments']);
 
 
