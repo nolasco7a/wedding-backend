@@ -3,9 +3,9 @@
     <div class="container-fluid">
         <h1 class="page-title">
             <i class="voyager-file-text"></i> Resumen de invitados 
-            <div class="btn btn-success add_item">
-                <i class="voyager-megaphone"></i> Enviar invitaciones 
-            </div>
+            <a href="{{ route('sendPendingInvitations') }}" class="btn btn-success add_item">
+                <i class="voyager-megaphone"></i> <span class="hidden-xs hidden-sm">Enviar invitaciones </span>
+            </a>
         </h1>
         @include('voyager::multilingual.language-selector')
     </div>

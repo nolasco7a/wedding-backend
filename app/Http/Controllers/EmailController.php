@@ -57,15 +57,26 @@ class EmailController extends Controller
         ->where('category', 1)
         ->where('status', 0)
         ->get();
-        foreach ($guests as $guest) {
-            try {
-                Mail::to($guest->email)->send(new TestMail($guest), 'Invitation wedding');
-                $guest->email_status = 1;
-                $guest->save();
-            } catch (\Throwable $th) {
-                return response()->json(['message' => 'Oops! There was some error sending the email.'], 500);
+
+        $guestError = [];
+        if (count($guests) > 0) {
+            foreach ($guests as $guest) {
+                try {
+                    Mail::to($guest->email)->send(new TestMail($guest), 'Invitation wedding');
+                    $guest->email_status = 1;
+                    $guest->status = 2;
+                    $guest->save();
+                } catch (\Throwable $th) {
+                    return response()->json(['message' => 'Oops! There was some error sending the email.'], 500);
+                    array_push($guestError, $guest->email);
+                }
             }
+            if (count($guestError) > 0) {
+                redirect()->route('guestResume')->with('message', 'Email not sent to: ' . implode(', ', $guestError));
+            }
+            return redirect()->route('guestResume')->with('message', 'Emails sent successfully.');
+        }else{
+            return redirect()->route('guestResume')->with('message', 'There was no pending invitations.');
         }
-        return response()->json(['message' => 'Emails sent successfully.'], 200);
     }
 }
