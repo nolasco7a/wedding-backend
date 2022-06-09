@@ -22,7 +22,7 @@ class CommentController extends Controller
     }
 
     public function getComments(){
-        $comments = Comments::all();
+        $comments = Comments::where('status', 1)->get();
         return json_encode($comments);
     }
 }
