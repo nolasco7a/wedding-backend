@@ -31,6 +31,7 @@ class TestMail extends Mailable
     public function build()
     {
         return $this->view('email.test-email')
+                    ->subject('Invitation wedding')
                     ->with(['guest' => $this->guest]);
     }
 }

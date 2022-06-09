@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get("/guest resume", [GuestController::class, 'guestResume'])->name("guestResume");
     Route::get('/send_invitation/{id}', [EmailController::class, 'sendInvitation'])->name("sendInvitation");
     Route::get('/send_invitation_all', [EmailController::class, 'sendInvitationAll'])->name("sendInvitationAll");
-    
     Route::get('/gift resume', [GiftController::class, 'giftResume'])->name("giftResume");
 });
+
+Route::get('/confirm_invitation/{id}', [GuestController::class, 'confirmInvitation'])->name("confirmInvitation");

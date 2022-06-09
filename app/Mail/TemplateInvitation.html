@@ -30,53 +30,65 @@
 font-family: 'Outfit', sans-serif;
 font-family: 'Source Serif Pro', serif; */
     body {
-        background-color: #f7e9e8;
+        background-color: #F2EADE;
     }
     .container{
-        margin-top: 4rem;
-    }
-    .title {
-        font-family: 'Source Serif Pro', serif;
-        font-size: 1.2rem;
-        text-align: center;
-        line-height: 2rem;
-        margin-bottom: 3rem;
-    }
-    .couple-names {}
-    .middle-name{
+        max-width: 1000px;
         display: flex;
-        align-items: center;
+        justify-content: center;
+        background-color: #F2EADE;
     }
-    .main-name {
-        font-family: 'Dancing Script', cursive;
-        font-size: 2.1rem;
-    }
-
-    .second-name {
-        font-family: 'Outfit', sans-serif;
+    h1{
+        text-align: center;
+        letter-spacing: 1rem;
         font-size: 1.5rem;
-        letter-spacing: 10px;
-        margin-top: 7rem;
+        color: rgb(93, 93, 93);
     }
+    .name{
+       text-align: center;
+        letter-spacing: .4rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgb(79, 79, 79); 
+    }
+    .p-anchor{
+        text-align: center;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    .a-btn{
+        text-decoration: none;
+        color: rgb(81, 81, 81);
+        font-size: 1rem;
+        margin-top: 2rem;
+        background-color: #F2EADE;
+        border: 1px solid #F2EADE;
+        padding: 1rem;
+        -webkit-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+        text-transform: capitalize;
+    }
+    .a-btn:hover{
+        background-color: #f5f5f5;
+        color: black;
+        border: solid 1px grey;
+        border-radius: 4px;
+    }
+    .confirmed{
+        text-align: center;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
 </style>
 
 <body>
-    <div class="container">
-        <h4 class="title">La familia López Castro en conjunto con la familia Chávez López, solicitan su precencia al
-            matrimonio de sus hijos:</h4>
-        <div class="row">
-            <div class="col-5">
-                <div class="main-name">David Roberto</div>
-                <div class="second-name">López Castro</div>
-            </div>
-            <div class="col-2 main-name middle-name"> & </div>
-            <div class="col-5">
-                <div class="main-name">
-                    Paola Verónica Nicolle
-                </div>
-                <div class="second-name">
-                    Chávez López</div>
-            </div>
+    <div class="container" style="padding: 1rem; background: #f5f5f5;">
+        <div>
+            <h1>INVITACIÓN</h1>
+            <p class="confirmed">Gracias Allan por confirmar!</p>
+            <img src="https://lopezchavezwedding.website/storage/svg/invitation.jpg" alt="lopezchavez invitation" srcset="">
         </div>
     </div>
 </body>

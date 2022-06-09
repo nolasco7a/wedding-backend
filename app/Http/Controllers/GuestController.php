@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Guest;
 use App\Models\Gift;
 use App\Models\ChildParent;
+use App\Mail\TestMail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 /*
 Data dictionary:
@@ -30,6 +32,21 @@ class GuestController extends Controller
     public function getGuests(){
         $guests = Guest::all();
         return $guests;
+    }
+
+    public function confirmInvitation($id){
+        $id = base64_decode($id);
+        $guest = Guest::find($id);
+        if ($guest->status == 0 || $guest->status == 2) {
+            $guest->status = 1;
+            $guest->save();
+
+            $invitation = false;
+            return view('confirm_invitation', compact('guest', 'invitation'));
+        }else{
+            $invitation = true;
+            return view('confirm_invitation', compact('guest', 'invitation'));
+        }
     }
 
     public function getChildOfParents(Request $request){
@@ -132,7 +149,10 @@ class GuestController extends Controller
                         Gift::where('id', $gift['id'])->update(['status' => 2]);
                     }
                 }
-
+                if ($request->status == 1) {
+                    $guest = Guest::where('email', $request->email)->first();
+                    Mail::to($guest->email)->send(new TestMail($guest), 'Invitation wedding');
+                }
             }else{
                 return response()->json(['message'=>'Data incorrect, fill the fields correctly']. 400);
             }
