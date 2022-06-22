@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guest;
 use App\Models\Gift;
 use App\Models\ChildParent;
-use App\Mail\TestMail;
+use App\Mail\InvitationMail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -151,7 +151,7 @@ class GuestController extends Controller
                 }
                 if ($request->status == 1) {
                     $guest = Guest::where('email', $request->email)->first();
-                    Mail::to($guest->email)->send(new TestMail($guest), 'Invitation wedding');
+                    Mail::to($guest->email)->send(new InvitationMail($guest), 'Invitation wedding');
                 }
             }else{
                 return response()->json(['message'=>'Data incorrect, fill the fields correctly']. 400);

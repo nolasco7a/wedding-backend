@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\TestMail;
+use App\Mail\InvitationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Guest;
@@ -16,7 +16,7 @@ class EmailController extends Controller
         $guest = Guest::find($userId);
 
         try {
-            Mail::to($guest->email, 'Invitation wedding')->send(new TestMail($guest));
+            Mail::to($guest->email, 'Invitation wedding')->send(new InvitationMail($guest));
             return response()->json(['message' => 'Email sent'], 200);
         } catch (\Throwable $th) {
             return response()->json(['message' => 'Email not sent '], 500);
@@ -36,7 +36,7 @@ class EmailController extends Controller
 
             if (($guest->email != null || $guest->email != '') && ($guest->email_status == 0 || $guest->email_status == null)) {
                 try {
-                    Mail::to(trim($guest->email), 'Invitation wedding')->send(new TestMail($guest));
+                    Mail::to(trim($guest->email), 'Invitation wedding')->send(new InvitationMail($guest));
                     $guest->email_status = 1;
                     $guest->status = 2;
                     $guest->save();
@@ -62,7 +62,7 @@ class EmailController extends Controller
         if (count($guests) > 0) {
             foreach ($guests as $guest) {
                 try {
-                    Mail::to($guest->email)->send(new TestMail($guest), 'Invitation wedding');
+                    Mail::to($guest->email)->send(new InvitationMail($guest), 'Invitation wedding');
                     $guest->email_status = 1;
                     $guest->status = 2;
                     $guest->save();
