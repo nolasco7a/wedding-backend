@@ -60,7 +60,7 @@
     <div>
         <h1>INVITACIÓN</h1>
         @if ($guest->status == 1)
-            <p class="confirmed">Gracias Allan por confirmar!</p>
+            <p class="confirmed">Gracias {{$guest->first_name}} por confirmar!</p>
         @else
             <p class="name">{{$guest->first_name}}</p>
             <p class="p-anchor"><a class="a-btn" href="https://lopezchavezwedding.website/confirm_invitation/{{ base64_encode($guest->id) }}">Confirmar invitación</a> </p>
